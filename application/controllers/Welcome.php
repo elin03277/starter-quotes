@@ -28,7 +28,7 @@ class Welcome extends Application
 	}
 
     /**
-     * Show just one actor
+     * Show just one actor 
      */
     public function show($key)
     {
