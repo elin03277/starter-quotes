@@ -32,19 +32,16 @@ class Welcome extends Application
      */
     public function show($key)
     {
-        // this is the view we want shown
-        $this->data['pagebody'] = 'actor';
+            // this is the view we want shown
+			$this->data['pagebody'] = 'actor';
+            // build the list of authors, to pass on to our view
+            $source = $this->quotes->get($key);
+			            // pass on the data to present, as the "authors" view parameter
+            $this->data['authors'] = $source;
+			// pass on the data to present, adding the author record's fields
+			$this->data = array_merge($this->data, (array) $source);
 
-        // build the list of authors, to pass on to our view
-        $source = $this->quotes->get($key);
-
-        // pass on the data to present, as the "authors" view parameter
-        $this->data['authors'] = $source;
-
-        // pass on the data to present, adding the author record's fields
-        $this->data = array_merge($this->data, (array) $source);
-
-        $this->render();
+            $this->render();
     }
 
 }
